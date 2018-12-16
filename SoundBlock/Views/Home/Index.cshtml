@@ -1,0 +1,90 @@
+﻿
+<section class="main padding">
+    <h2>SoundBlock</h2>
+    <p>You shall not pass!</p>
+
+    <div class="container">
+        <div class="row row-visual">
+            <div class="padding">
+                <div class="row row-triger">
+                    <div>
+                        <h4>Затухание</h4>
+                        <p>Понизить громкость если звук выше N%</p>
+                    </div>
+                    <div>
+                        <div class="triger tooltip" id="threshold_use_between"><span class="tooltiptext">Включить интервальное погашение</span></div>
+                    </div>
+                </div>
+
+                <div id="display-threshold-between">
+                    <input type="text" id="range-threshold-between" name="" value="" />
+                </div>
+                <div id="display-threshold">
+                    <input type="text" id="range-threshold" name="" value="" />
+                </div>
+            </div>
+            <div class="border-left">
+                <canvas id="volume-down" width="40" height="110"></canvas>
+            </div>
+        </div>
+
+        <div class="row row-visual border-top">
+            <div class="padding">
+                <h4>Усиление</h4>
+                <p>Повысить громкость если звук ниже N%</p>
+
+                <input type="text" id="velelup" name="" value="" />
+            </div>
+            <div class="border-left">
+                <canvas id="volume-up" width="40" height="110"></canvas>
+            </div>
+        </div>
+
+        <div class="row border-top">
+            <div style="width: 33.3%">
+                <div class="padding">
+                    <h4>Компенсация</h4>
+                    <p>Повысить или понизить громкость</p>
+                    <div id="bar-volume-level">
+                        <div class="bar">
+                            <div class="bar-control"></div>
+                            <div class="bar-control-value">54%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 33.3%" class="border-left padding">
+                <h4>Реакция</h4>
+                <p>Время реакции на контроль громкости</p>
+                <div id="bar-volume-delay">
+                    <div class="bar">
+                        <div class="bar-control"></div>
+                        <div class="bar-control-value">54%</div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 33.3%" class="border-left padding">
+                <h4>Сила</h4>
+                <p>Сила затухания и усиления</p>
+                <div id="bar-volume-multipli">
+                    <div class="bar">
+                        <div class="bar-control"></div>
+                        <div class="bar-control-value">54%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-top padding">
+            <canvas id="volume-visual" width="600" height="150"></canvas>
+
+            <div class="row">
+                <div class="graph-info"><i style="background-color: red"></i> Оригинальная дорожка</div>
+                <div class="graph-info"><i style="background-color: #ff5700"></i> Измененная дорожка</div>
+                <div class="graph-info"><i style="background-color: #e73164"></i> Затухание</div>
+                <div class="graph-info"><i style="background-color: #a8d718"></i> Усиление</div>
+            </div>
+        </div>
+    </div>
+
+</section>

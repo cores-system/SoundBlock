@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>SoundBlock</title>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+		<link rel="manifest" href="icons/site.webmanifest">
+		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="icons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-config" content="icons/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+
+
+        <!-- CSS stylesheets -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        <link rel="stylesheet" href="assets/knobKnob/knobKnob.css" />
+        <link rel="stylesheet" href="assets/ion.range/css/ion.rangeSlider.css" />
+        <link rel="stylesheet" href="assets/ion.range/css/ion.rangeSlider.skinFlat.css" />
+        
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+
+		
+		<section class="main padding">
+			<h2>SoundBlock</h2>
+			<p>You shall not pass!</p>
+
+			<div class="container">
+				<div class="row row-visual">
+					<div class="padding">
+						<div class="row row-triger">
+							<div>
+								<h4>Затухание</h4>
+								<p>Понизить громкость если звук выше N%</p>
+							</div>
+							<div>
+								<div class="triger tooltip" id="threshold_use_between"><span class="tooltiptext">Включить интервальное погашение</span></div>
+							</div>
+						</div>
+
+						<div id="display-threshold-between">
+							<input type="text" id="range-threshold-between" name="" value="" />
+						</div>
+						<div id="display-threshold">
+							<input type="text" id="range-threshold" name="" value="" />
+						</div>
+					</div>
+					<div class="border-left">
+						<canvas id="volume-down" width="40" height="110"></canvas>
+					</div>
+				</div>
+
+				<div class="row row-visual border-top">
+					<div class="padding">
+						<h4>Усиление</h4>
+						<p>Повысить громкость если звук ниже N%</p>
+
+						<input type="text" id="velelup" name="" value="" />
+					</div>
+					<div class="border-left">
+						<canvas id="volume-up" width="40" height="110"></canvas>
+					</div>
+				</div>
+
+				<div class="row border-top">
+					<div style="width: 50%">
+						<div class="padding">
+							<h4>Компенсация</h4>
+							<p>Повысить или понизить громкость</p>
+							<div id="bar-volume-level">
+								<div class="bar">
+									<div class="bar-control"></div>
+									<div class="bar-control-value">54%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="width: 50%" class="border-left padding">
+						<h4>Реакция</h4>
+						<p>Время реакции на контроль громкости</p>
+						<div id="bar-volume-delay">
+							<div class="bar">
+								<div class="bar-control"></div>
+								<div class="bar-control-value">54%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="border-top padding">
+					<canvas id="volume-visual" width="600" height="150"></canvas>
+
+					<div class="row">
+						<div class="graph-info"><i style="background-color: red"></i> Оригинальная дорожка</div>
+						<div class="graph-info"><i style="background-color: #ff5700"></i> Измененная дорожка</div>
+						<div class="graph-info"><i style="background-color: #e73164"></i> Затухание</div>
+						<div class="graph-info"><i style="background-color: #a8d718"></i> Усиление</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+        
+        <!-- JavaScript includes -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="assets/knobKnob/transform.js"></script>
+		<script src="assets/knobKnob/knobKnob.jquery.js"></script>
+		<script src="assets/ion.range/js/ion-rangeSlider/ion.rangeSlider.js"></script>
+
+		<script src="assets/js/volume.js"></script>
+		<script src="assets/js/visual.js"></script>
+		<script src="assets/js/bar.js"></script>
+		<script src="assets/js/test.js"></script>
+
+		<script> 
+			var options = {
+				threshold_use_between: false, //типа затухания
+
+				threshold_between_max: 80, //затузать до
+				threshold_between_min: 50, //затухать от
+
+				threshold_from: 60, //затухать с выше
+
+				velelup: 25, //усиление
+
+				compensation: 1, //компинсация громкости
+				delay: 100 //реакция
+			};
+		</script>
+
+		<script src="assets/js/script.js"></script>
+
+       
+    </body>
+</html>
+

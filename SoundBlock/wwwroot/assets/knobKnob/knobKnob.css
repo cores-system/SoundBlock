@@ -1,0 +1,37 @@
+/*----------------------------
+	knobKnob Styles
+-----------------------------*/
+
+
+.knob{
+	width:104px;
+	height:104px;
+	position:relative;
+}
+
+.knob .top{
+	position:absolute;
+	top:0;
+	left:0;
+	width:104px;
+	height:104px;
+	background:url('knob.png') no-repeat;
+	z-index:10;
+	cursor:default !important;
+}
+
+.knob .base{
+	width:104px;
+	height:104px;
+	border-radius:50%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+}
+
+.knob [draggable] {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

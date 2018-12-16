@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+}
+
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+
+html{
+	background:url('../img/bg.jpg') #1f2129;
+	position:relative;
+}
+
+body{
+	font:14px/1.2 'Segoe UI',Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #ddd;
+	opacity:0;
+}
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	color:#54a6de;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+p{
+	opacity: 0.5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	margin-bottom: 15px;
+	font-size: 12px;
+}
+
+section, footer{
+	display: block;
+}
+
+
+.main{
+	
+	min-height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 0 auto;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.container{
+	border: 1px solid rgba(221, 221, 221, 0.078);
+}
+
+.border-top{
+	border-top: 1px solid rgba(221, 221, 221, 0.078);
+}
+.border-right{
+	border-right: 1px solid rgba(221, 221, 221, 0.078);
+}
+.border-bottom{
+	border-bottom: 1px solid rgba(221, 221, 221, 0.078);
+}
+.border-left{
+	border-left: 1px solid rgba(221, 221, 221, 0.078);
+}
+
+.row{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.row-triger > div:first-child{
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+}
+.row-triger > div:last-child{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+}
+.row-visual > div:first-child{
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+}
+.row-visual > div:last-child{
+	width: 60px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+
+.padding{
+	padding: 15px;
+}
+
+.triger{
+	display: inline-block;
+	width: 48px;
+	height: 18px;
+	background: url(../img/triger.png);
+	cursor: pointer;
+}
+.triger.active{
+	background-position: -48px 0;
+}
+
+.graph-info{
+	color: #dddddddb;
+    font-size: 11px;
+    padding-right: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 15px;
+}
+.graph-info i{
+	display: inline-block;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	margin-right: 5px;
+}
+/*----------------------------
+	Color Bars
+-----------------------------*/
+
+
+.bar{
+	height: 140px;
+	margin: 0 auto;
+	position: relative;
+	width: 140px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #dddddd8a;
+    font-weight: 700;
+}
+
+.bar-control{
+	width:104px;
+	height:104px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-52px 0 0 -52px;
+}
+
+.colorBar{
+	width:6px;
+	height:2px;
+	position:absolute;
+	opacity:0.05;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
+	-webkit-transition:0.3s;
+	transition:0.3s;
+	box-shadow: 0 0 15px red;
+}
+
+.colorBar.active{
+	opacity:1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.5) transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+

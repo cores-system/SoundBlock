@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SoundBlock</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/knobKnob/knobKnob.css" />
+    <link rel="stylesheet" href="assets/ion.range/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="assets/ion.range/css/ion.rangeSlider.skinFlat.css" />
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @RenderBody()
+
+
+
+    <!-- JavaScript includes -->
+    <script src="assets/js/jquery-1.7.1.min.js"></script>
+    <script src="assets/knobKnob/transform.js"></script>
+    <script src="assets/knobKnob/knobKnob.jquery.js"></script>
+    <script src="assets/ion.range/js/ion-rangeSlider/ion.rangeSlider.js"></script>
+
+    <script src="assets/js/volume.js"></script>
+    <script src="assets/js/visual.js"></script>
+    <script src="assets/js/bar.js"></script>
+    <script src="assets/js/test.js"></script>
+
+    <script>
+
+        
+        var options = {};
+
+        var VOL = {
+            curent: [],
+            limiter: [],
+            level: 0.3
+        }
+
+        $.get('api/LoadProfile?name=def', function (json) {
+            options = json;
+
+            Init();
+        })
+    </script>
+
+    <script src="assets/js/script.js"></script>
+
+    <script type="text/javascript" src="/signalr.min.js"></script>
+    <script>
+        var Hub = new signalR.HubConnectionBuilder().withUrl('/hubs/grafic').build();
+
+        Hub.on('OnGrafic', function (curent, level, limiter) {
+            putTo(VOL.curent, limiter, 2);
+            putTo(VOL.limiter, curent, 2);
+
+            VOL.level = level;
+        })
+
+        Hub.on('OnLog', function (text) {
+            console.log(text)
+        })
+
+        Hub.start();
+    </script>
+</body>
+</html>
