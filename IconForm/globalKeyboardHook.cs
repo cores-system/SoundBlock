@@ -58,17 +58,19 @@ namespace IconForm
             if (code >= 0)
             {
                 //File.AppendAllText(@"C:\gkh_KeyUp.txt", lParam.vkCode.ToString() + Environment.NewLine);
-                
-                KeyEventArgs kea = new KeyEventArgs((Keys)lParam.vkCode);
+
+                Keys key = (Keys)lParam.vkCode;
+                KeyEventArgs kea = new KeyEventArgs(key);
                 if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null))
                 {
                     KeyDown(this, kea);
                 }
-                else
-                    if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
+                else if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
                 {
                     KeyUp(this, kea);
                 }
+                if (kea.Handled)
+                    return 1;
             }
             return CallNextHookEx(hhook, code, wParam, ref lParam);
         }
