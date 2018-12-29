@@ -52,7 +52,7 @@ namespace SoundBlock.Controllers
         {
             if (Normalizer.AudioVolume != null)
             {
-                Settings.Level = code == "F2" ? (Settings.Level - 0.02f) : (Settings.Level + 0.02f);
+                Settings.Level = code == "DOWN" ? (Settings.Level - 0.02f) : (Settings.Level + 0.02f);
                 return true;
             }
 

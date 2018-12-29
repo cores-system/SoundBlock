@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -23,7 +24,6 @@ namespace IconForm
         const int WM_KEYUP = 0x101;
         const int WM_SYSKEYDOWN = 0x104;
         const int WM_SYSKEYUP = 0x105;
-        public List<Keys> HookedKeys = new List<Keys>();
         IntPtr hhook = IntPtr.Zero;
         public event KeyEventHandler KeyDown;
         public event KeyEventHandler KeyUp;
@@ -57,21 +57,17 @@ namespace IconForm
         {
             if (code >= 0)
             {
-                Keys key = (Keys)lParam.vkCode;
-                if (HookedKeys.Contains(key))
+                //File.AppendAllText(@"C:\gkh_KeyUp.txt", lParam.vkCode.ToString() + Environment.NewLine);
+                
+                KeyEventArgs kea = new KeyEventArgs((Keys)lParam.vkCode);
+                if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null))
                 {
-                    KeyEventArgs kea = new KeyEventArgs(key);
-                    if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null))
-                    {
-                        KeyDown(this, kea);
-                    }
-                    else
-                        if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
-                    {
-                        KeyUp(this, kea);
-                    }
-                    if (kea.Handled)
-                        return 1;
+                    KeyDown(this, kea);
+                }
+                else
+                    if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
+                {
+                    KeyUp(this, kea);
                 }
             }
             return CallNextHookEx(hhook, code, wParam, ref lParam);

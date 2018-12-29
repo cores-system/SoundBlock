@@ -39,8 +39,6 @@ namespace IconForm
             CreateContextMenu();
 
             //
-            gkh.HookedKeys.Add(Keys.F2);
-            gkh.HookedKeys.Add(Keys.F3);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
         }
 
@@ -66,12 +64,12 @@ namespace IconForm
 
         private void gkh_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2 || e.KeyCode == Keys.F3)
+            if (e.KeyCode == Keys.VolumeDown || e.KeyCode == Keys.VolumeUp)
             {
                 try
                 {
                     var web = new WebClient();
-                    web.DownloadString("http://localhost:5000/api/UpdateLevel?code=" + e.KeyCode.ToString().ToUpper());
+                    web.DownloadString("http://localhost:5000/api/UpdateLevel?code=" + (e.KeyCode == Keys.VolumeDown ? "DOWN" : "UP"));
                     web.Dispose();
                 }
                 catch { }

@@ -270,6 +270,8 @@ function Init(){
 		options.threshold_use_between = $(this).hasClass('active');
 
 		showSwithThreshold();
+
+		saveSettings();
 	})
 
 	if(options.threshold_use_between) doom.threshold_use_between.addClass('active');
